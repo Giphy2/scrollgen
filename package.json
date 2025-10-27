@@ -13,10 +13,10 @@
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "deploy:sepolia": "npx hardhat run scripts/deploy.js --network scrollSepolia",
-    "deploy:phase2": "npx hardhat run scripts/deploy-phase2.js --network scrollSepolia",
+    "deploy:phase2": "npx hardhat run scripts/deploy-phase2.cjs --network scrollSepolia",
     "verify": "npx hardhat run scripts/verify.js --network scrollSepolia",
     "interact": "npx hardhat run scripts/interactions.js --network scrollSepolia",
-    "interact:phase2": "npx hardhat run scripts/interact-phase2.js --network scrollSepolia"
+    "interact:phase2": "npx hardhat run scripts/interact-phase2.cjs --network scrollSepolia"
   },
   "keywords": [
     "scroll",

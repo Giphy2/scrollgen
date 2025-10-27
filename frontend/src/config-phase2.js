@@ -1,6 +1,9 @@
-export const GENESIS_BADGE_ADDRESS = import.meta.env.VITE_GENESIS_BADGE_ADDRESS || "";
-export const NFT_STAKING_ADDRESS = import.meta.env.VITE_NFT_STAKING_ADDRESS || "";
-export const MARKETPLACE_ADDRESS = import.meta.env.VITE_MARKETPLACE_ADDRESS || "";
+// Phase 2 Contract Addresses - Scroll Sepolia Testnet
+export const GENESIS_BADGE_ADDRESS = import.meta.env.VITE_GENESIS_BADGE_ADDRESS || "0xB019337963991C59f6245A1d739fF190a9842E99";
+export const NFT_STAKING_ADDRESS = import.meta.env.VITE_NFT_STAKING_ADDRESS || "0xC4106D4545e07503944c2eEB20C212d0c2F378Eb";
+export const MARKETPLACE_ADDRESS = import.meta.env.VITE_MARKETPLACE_ADDRESS || "0x2303db3293C97D21ae446E766f2b81DA09b42052";
+
+// Phase 2.1 - Governance (To be deployed)
 export const VOTES_TOKEN_ADDRESS = import.meta.env.VITE_VOTES_TOKEN_ADDRESS || "";
 export const GOVERNOR_ADDRESS = import.meta.env.VITE_GOVERNOR_ADDRESS || "";
 export const TIMELOCK_ADDRESS = import.meta.env.VITE_TIMELOCK_ADDRESS || "";
