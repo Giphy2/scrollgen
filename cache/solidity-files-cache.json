@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/tmp/cc-agent/59221769/project/contracts/GenesisBadge.sol": {
-      "lastModificationDate": 1761533335213,
-      "contentHash": "9ffef9d37f5c9fb16ae5270bee567748",
+      "lastModificationDate": 1761584262167,
+      "contentHash": "fc2732856c8c2d464732414c7717246b",
       "sourceName": "contracts/GenesisBadge.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -765,7 +765,7 @@
       "artifacts": []
     },
     "/tmp/cc-agent/59221769/project/contracts/NFTStaking.sol": {
-      "lastModificationDate": 1761533304750,
+      "lastModificationDate": 1761584222250,
       "contentHash": "d13476e522d98a7eac1d037b1093cb03",
       "sourceName": "contracts/NFTStaking.sol",
       "solcConfig": {
@@ -957,8 +957,8 @@
       ]
     },
     "/tmp/cc-agent/59221769/project/contracts/NFTMarketplace.sol": {
-      "lastModificationDate": 1761533304777,
-      "contentHash": "24c9ab7db433d454dc0764f7de79067e",
+      "lastModificationDate": 1761584270776,
+      "contentHash": "067188ecd8090e596d587129f5dba434",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.24",

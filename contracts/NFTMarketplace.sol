@@ -148,7 +148,7 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
         require(listing.seller == msg.sender, "Not the seller");
         require(newPrice > 0, "Price must be greater than 0");
 
-        uint256 oldPrice = listing.price;
+        // uint256 oldPrice = listing.price;
         listing.price = newPrice;
 
         emit Listed(tokenId, msg.sender, newPrice, block.timestamp);

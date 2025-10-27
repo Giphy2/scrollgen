@@ -61,14 +61,14 @@ contract GenesisBadge is ERC721, ERC721URIStorage, Ownable {
     /// @notice Mint a new Genesis Badge
     /// @param to Address to receive the badge
     /// @param tier Badge tier level (0-4)
-    /// @param tokenURI IPFS hash for token metadata
+    /// @param metadataURI IPFS hash for token metadata
     /// @return tokenId The newly minted token ID
-    function mint(address to, uint8 tier, string memory tokenURI)
+    function mint(address to, uint8 tier, string memory metadataURI)
         external
         returns (uint256)
     {
         require(msg.sender == minter || msg.sender == owner(), "Not authorized to mint");
-        _mintBadge(to, tier, tokenURI);
+        _mintBadge(to, tier, metadataURI);
         return _tokenIdCounter - 1;
     }
 
@@ -94,7 +94,7 @@ contract GenesisBadge is ERC721, ERC721URIStorage, Ownable {
     }
 
     /// @dev Internal mint function
-    function _mintBadge(address to, uint8 tier, string memory tokenURI) private {
+    function _mintBadge(address to, uint8 tier, string memory metadataURI) private {
         require(to != address(0), "Cannot mint to zero address");
         require(_tokenIdCounter < MAX_SUPPLY, "Max supply reached");
         require(tier <= uint8(Tier.Diamond), "Invalid tier");
@@ -103,7 +103,7 @@ contract GenesisBadge is ERC721, ERC721URIStorage, Ownable {
         _tokenIdCounter++;
 
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, tokenURI);
+        _setTokenURI(tokenId, metadataURI);
 
         tokenTier[tokenId] = tier;
         badgesMinted[to]++;
