@@ -29,6 +29,12 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
     /// @notice Mapping of seller to their active listings
     mapping(address => uint256[]) private sellerListings;
 
+    /// @notice Array of all active listing token IDs for efficient querying
+    uint256[] private activeListingIds;
+
+    /// @notice Mapping from token ID to index in activeListingIds array
+    mapping(uint256 => uint256) private activeListingIndex;
+
     /// @notice Total marketplace fees collected
     uint256 public feesCollected;
 
@@ -85,6 +91,7 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
         });
 
         sellerListings[msg.sender].push(tokenId);
+        _addToActiveListings(tokenId);
 
         emit Listed(tokenId, msg.sender, price, block.timestamp);
     }
@@ -119,6 +126,7 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
         genesisBadge.transferFrom(address(this), msg.sender, tokenId);
 
         _removeSellerListing(seller, tokenId);
+        _removeFromActiveListings(tokenId);
 
         emit Sold(tokenId, seller, msg.sender, price, fee, block.timestamp);
     }
@@ -135,6 +143,7 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
         genesisBadge.transferFrom(address(this), msg.sender, tokenId);
 
         _removeSellerListing(msg.sender, tokenId);
+        _removeFromActiveListings(tokenId);
 
         emit Cancelled(tokenId, msg.sender, block.timestamp);
     }
@@ -213,36 +222,35 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
             uint256[] memory prices
         )
     {
-        uint256 maxTokenId = 10000;
-        uint256 count = 0;
+        uint256 totalActive = activeListingIds.length;
 
-        for (uint256 i = 0; i < maxTokenId && count < limit; i++) {
-            if (listings[i].active && count >= offset) {
-                count++;
-            }
+        if (offset >= totalActive) {
+            return (new uint256[](0), new address[](0), new uint256[](0));
         }
+
+        uint256 remaining = totalActive - offset;
+        uint256 count = remaining < limit ? remaining : limit;
 
         tokenIds = new uint256[](count);
         sellers = new address[](count);
         prices = new uint256[](count);
 
-        uint256 index = 0;
-        uint256 skipped = 0;
+        for (uint256 i = 0; i < count; i++) {
+            uint256 tokenId = activeListingIds[offset + i];
+            Listing memory listing = listings[tokenId];
 
-        for (uint256 i = 0; i < maxTokenId && index < count; i++) {
-            if (listings[i].active) {
-                if (skipped >= offset) {
-                    tokenIds[index] = i;
-                    sellers[index] = listings[i].seller;
-                    prices[index] = listings[i].price;
-                    index++;
-                } else {
-                    skipped++;
-                }
-            }
+            tokenIds[i] = tokenId;
+            sellers[i] = listing.seller;
+            prices[i] = listing.price;
         }
 
         return (tokenIds, sellers, prices);
+    }
+
+    /// @notice Get total number of active listings
+    /// @return Total active listings count
+    function getActiveListingsCount() external view returns (uint256) {
+        return activeListingIds.length;
     }
 
     /// @notice Calculate fee for a given price
@@ -289,5 +297,28 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
     function rescueNFT(uint256 tokenId) external onlyOwner {
         require(!listings[tokenId].active, "Cannot rescue active listing");
         genesisBadge.transferFrom(address(this), owner(), tokenId);
+    }
+
+    /// @notice Add token ID to active listings array
+    /// @param tokenId Token ID to add
+    function _addToActiveListings(uint256 tokenId) private {
+        activeListingIndex[tokenId] = activeListingIds.length;
+        activeListingIds.push(tokenId);
+    }
+
+    /// @notice Remove token ID from active listings array
+    /// @param tokenId Token ID to remove
+    function _removeFromActiveListings(uint256 tokenId) private {
+        uint256 index = activeListingIndex[tokenId];
+        uint256 lastIndex = activeListingIds.length - 1;
+
+        if (index != lastIndex) {
+            uint256 lastTokenId = activeListingIds[lastIndex];
+            activeListingIds[index] = lastTokenId;
+            activeListingIndex[lastTokenId] = index;
+        }
+
+        activeListingIds.pop();
+        delete activeListingIndex[tokenId];
     }
 }
