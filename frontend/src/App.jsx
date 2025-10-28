@@ -216,7 +216,7 @@ function App() {
               {activeTab === 'token' && (
                 <>
                   <TokenInfo contract={contract} account={account} />
-                  <TransferForm contract={contract} />
+                  <TransferForm contract={contract} account={account} />
                 </>
               )}
               {activeTab === 'staking' && <StakingUI provider={provider} account={account} />}
