@@ -19,6 +19,7 @@ export const GENESIS_BADGE_ABI = [
   "function MAX_SUPPLY() view returns (uint256)",
   "function approve(address to, uint256 tokenId)",
   "function setApprovalForAll(address operator, bool approved)",
+  "function isApprovedForAll(address owner, address operator) view returns (bool)",
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
 ];
 
@@ -44,6 +45,7 @@ export const MARKETPLACE_ABI = [
   "function getListing(uint256 tokenId) view returns (address seller, uint256 price, bool active)",
   "function getSellerListings(address seller) view returns (uint256[])",
   "function getActiveListings(uint256 offset, uint256 limit) view returns (uint256[] tokenIds, address[] sellers, uint256[] prices)",
+  "function getActiveListingsCount() view returns (uint256)",
   "function marketplaceFee() view returns (uint256)",
   "function calculateFee(uint256 price) view returns (uint256)",
   "event Listed(uint256 indexed tokenId, address indexed seller, uint256 price, uint256 timestamp)",

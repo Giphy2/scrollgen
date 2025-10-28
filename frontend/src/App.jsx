@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import StakingUI from './components/StakingUI';
 import LendingUI from './components/LendingUI';
 import NFTGallery from './components/NFTGallery';
+import NFTMarketplace from './components/NFTMarketplace';
 import BridgeInterface from './components/BridgeInterface';
 import Footer from './components/Footer';
 import { CONTRACT_ADDRESS, TOKEN_ABI, SCROLL_SEPOLIA_CONFIG } from './config';
@@ -204,6 +205,12 @@ function App() {
                 NFTs
               </button>
               <button
+                onClick={() => setActiveTab('marketplace')}
+                style={activeTab === 'marketplace' ? styles.tabActive : styles.tabInactive}
+              >
+                Marketplace
+              </button>
+              <button
                 onClick={() => setActiveTab('bridge')}
                 style={activeTab === 'bridge' ? styles.tabActive : styles.tabInactive}
               >
@@ -222,6 +229,7 @@ function App() {
               {activeTab === 'staking' && <StakingUI provider={provider} account={account} />}
               {activeTab === 'lending' && <LendingUI provider={provider} account={account} />}
               {activeTab === 'nfts' && <NFTGallery provider={provider} account={account} />}
+              {activeTab === 'marketplace' && <NFTMarketplace provider={provider} account={account} />}
               {activeTab === 'bridge' && <BridgeInterface provider={provider} account={account} />}
             </div>
           </>
