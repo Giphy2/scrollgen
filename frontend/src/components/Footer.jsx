@@ -8,7 +8,7 @@ export default function Footer() {
           <p style={styles.text}>
             Built on <span style={styles.highlight}>Scroll zkEVM</span>
           </p>
-          <p style={styles.subtext}>Phase 1: Token Launch</p>
+          <p style={styles.subtext}>Multi-Phase zkEVM Protocol</p>
         </div>
 
         <div style={styles.links}>
