@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Send, CheckCircle, XCircle } from 'lucide-react';
+import { Send, CheckCircle, XCircle, Download, Copy } from 'lucide-react';
 import { ethers } from 'ethers';
 
-export default function TransferForm({ contract }) {
+export default function TransferForm({ contract, account }) {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
   const [txStatus, setTxStatus] = useState(null);
   const [txHash, setTxHash] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const handleTransfer = async (e) => {
     e.preventDefault();
@@ -43,11 +44,74 @@ export default function TransferForm({ contract }) {
     }
   };
 
-  return (
-    <div className="card">
-      <h2 className="card-title">Transfer Tokens</h2>
+  const handleCopyAddress = async () => {
+    if (account) {
+      try {
+        await navigator.clipboard.writeText(account);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (error) {
+        console.error('Failed to copy:', error);
+      }
+    }
+  };
 
-      <form onSubmit={handleTransfer}>
+  return (
+    <>
+      <div className="card">
+        <h2 className="card-title">Receive Tokens</h2>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.875rem' }}>
+          Share your address to receive SGT tokens
+        </p>
+
+        <div style={{
+          background: 'var(--bg)',
+          border: '1px solid var(--border)',
+          borderRadius: '8px',
+          padding: '1rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          flexWrap: 'wrap'
+        }}>
+          <div style={{ flex: 1, minWidth: '200px' }}>
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+              Your Address
+            </div>
+            <div className="address" style={{ wordBreak: 'break-all', fontSize: '0.9rem' }}>
+              {account}
+            </div>
+          </div>
+          <button
+            type="button"
+            className="secondary"
+            onClick={handleCopyAddress}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.75rem 1.5rem'
+            }}
+          >
+            {copied ? (
+              <>
+                <CheckCircle size={18} />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy size={18} />
+                <span>Copy Address</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      <div className="card">
+        <h2 className="card-title">Transfer Tokens</h2>
+
+        <form onSubmit={handleTransfer}>
         <div className="form-group">
           <label htmlFor="recipient">Recipient Address</label>
           <input
@@ -106,6 +170,7 @@ export default function TransferForm({ contract }) {
           )}
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
