@@ -3,6 +3,11 @@ import { ethers } from 'ethers';
 import Navbar from './components/Navbar';
 import TokenInfo from './components/TokenInfo';
 import TransferForm from './components/TransferForm';
+import Dashboard from './components/Dashboard';
+import StakingUI from './components/StakingUI';
+import LendingUI from './components/LendingUI';
+import NFTGallery from './components/NFTGallery';
+import BridgeInterface from './components/BridgeInterface';
 import Footer from './components/Footer';
 import { CONTRACT_ADDRESS, TOKEN_ABI, SCROLL_SEPOLIA_CONFIG } from './config';
 
@@ -12,6 +17,7 @@ function App() {
   const [contract, setContract] = useState(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState('');
+  const [activeTab, setActiveTab] = useState('dashboard');
 
   useEffect(() => {
     if (window.ethereum) {
@@ -166,8 +172,58 @@ function App() {
           </div>
         ) : contract ? (
           <>
-            <TokenInfo contract={contract} account={account} />
-            <TransferForm contract={contract} />
+            <div style={styles.tabs}>
+              <button
+                onClick={() => setActiveTab('dashboard')}
+                style={activeTab === 'dashboard' ? styles.tabActive : styles.tabInactive}
+              >
+                Dashboard
+              </button>
+              <button
+                onClick={() => setActiveTab('token')}
+                style={activeTab === 'token' ? styles.tabActive : styles.tabInactive}
+              >
+                Token
+              </button>
+              <button
+                onClick={() => setActiveTab('staking')}
+                style={activeTab === 'staking' ? styles.tabActive : styles.tabInactive}
+              >
+                Staking
+              </button>
+              <button
+                onClick={() => setActiveTab('lending')}
+                style={activeTab === 'lending' ? styles.tabActive : styles.tabInactive}
+              >
+                Lending
+              </button>
+              <button
+                onClick={() => setActiveTab('nfts')}
+                style={activeTab === 'nfts' ? styles.tabActive : styles.tabInactive}
+              >
+                NFTs
+              </button>
+              <button
+                onClick={() => setActiveTab('bridge')}
+                style={activeTab === 'bridge' ? styles.tabActive : styles.tabInactive}
+              >
+                Bridge
+              </button>
+            </div>
+
+            <div style={styles.tabContent}>
+              {activeTab === 'dashboard' && <Dashboard provider={provider} account={account} />}
+              {activeTab === 'token' && (
+                <>
+                  <TokenInfo contract={contract} account={account} />
+                  <TransferForm contract={contract} />
+                </>
+              )}
+              {activeTab === 'staking' && <StakingUI provider={provider} account={account} />}
+              {activeTab === 'lending' && <LendingUI provider={provider} account={account} />}
+              {activeTab === 'nfts' && <NFTGallery provider={provider} account={account} />}
+              {activeTab === 'bridge' && <BridgeInterface provider={provider} account={account} />}
+            </div>
           </>
         ) : (
           <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
@@ -229,6 +285,41 @@ const styles = {
     fontSize: '0.875rem',
     color: 'var(--text-secondary)',
     lineHeight: '1.5',
+  },
+  tabs: {
+    display: 'flex',
+    gap: '0.5rem',
+    marginBottom: '2rem',
+    borderBottom: '1px solid var(--border)',
+    paddingBottom: '0',
+    overflowX: 'auto',
+  },
+  tabActive: {
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '2px solid var(--accent)',
+    color: 'var(--accent)',
+    padding: '0.75rem 1.5rem',
+    cursor: 'pointer',
+    fontWeight: '600',
+    fontSize: '1rem',
+    transition: 'all 0.2s',
+    whiteSpace: 'nowrap',
+  },
+  tabInactive: {
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '2px solid transparent',
+    color: 'var(--text-secondary)',
+    padding: '0.75rem 1.5rem',
+    cursor: 'pointer',
+    fontWeight: '500',
+    fontSize: '1rem',
+    transition: 'all 0.2s',
+    whiteSpace: 'nowrap',
+  },
+  tabContent: {
+    marginTop: '2rem',
   },
 };
 
