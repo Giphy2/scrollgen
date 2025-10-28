@@ -1,8 +1,8 @@
-// Phase 3 Contract Addresses - Scroll Sepolia Testnet
-export const STAKING_REWARDS_ADDRESS = import.meta.env.VITE_STAKING_REWARDS_ADDRESS || "";
-export const LENDING_PROTOCOL_ADDRESS = import.meta.env.VITE_LENDING_PROTOCOL_ADDRESS || "";
-export const BRIDGE_CONNECTOR_ADDRESS = import.meta.env.VITE_BRIDGE_CONNECTOR_ADDRESS || "";
-export const ZK_VERIFIER_ADDRESS = import.meta.env.VITE_ZK_VERIFIER_ADDRESS || "";
+// Phase 3 Contract Addresses - Scroll Sepolia Testnet (Deployed Oct 28, 2024)
+export const STAKING_REWARDS_ADDRESS = import.meta.env.VITE_STAKING_REWARDS_ADDRESS || "0xc295A7D3F75017846bF14e5F8a4De8ebB77C2748";
+export const LENDING_PROTOCOL_ADDRESS = import.meta.env.VITE_LENDING_PROTOCOL_ADDRESS || "0x659243b57dda982070034e1E7e0C0DbE81CE880F";
+export const BRIDGE_CONNECTOR_ADDRESS = import.meta.env.VITE_BRIDGE_CONNECTOR_ADDRESS || "0x56C03527EEF00dCFefefEa71a96227bbA20231dd";
+export const ZK_VERIFIER_ADDRESS = import.meta.env.VITE_ZK_VERIFIER_ADDRESS || "0xeCCa6A5F020FA33fe18367C412981BF75036b578";
 
 // Lock duration options (in seconds)
 export const LOCK_DURATIONS = {
