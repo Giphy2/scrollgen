@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title NFTMarketplace - Trade Genesis Badges with SGT
 /// @notice Decentralized marketplace for buying/selling NFTs using SGT tokens
-contract NFTMarketplace is listNFT()Ownable, ReentrancyGuard {
+contract NFTMarketplace is Ownable, ReentrancyGuard {
 
     IERC721 public immutable genesisBadge;
     IERC20 public immutable sgtToken;
