@@ -154,8 +154,8 @@ export default function NFTMarketplace({ provider, account }) {
     try {
       setLoading(true);
       const signer = await provider.getSigner();
-      const badgeWithSigner = badgeContract.connect(signer);
-      const marketplaceWithSigner = marketplaceContract.connect(signer);
+      const badgeWithSigner = new ethers.Contract(GENESIS_BADGE_ADDRESS, GENESIS_BADGE_ABI, signer);
+      const marketplaceWithSigner = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, signer);
 
       const isApproved = await badgeWithSigner.isApprovedForAll(account, MARKETPLACE_ADDRESS);
 
@@ -184,8 +184,8 @@ export default function NFTMarketplace({ provider, account }) {
     try {
       setLoading(true);
       const signer = await provider.getSigner();
-      const marketplaceWithSigner = marketplaceContract.connect(signer);
-      const sgtWithSigner = sgtContract.connect(signer);
+      const marketplaceWithSigner = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, signer);
+      const sgtWithSigner = new ethers.Contract(SGT_ADDRESS, TOKEN_ABI, signer);
 
       const priceInWei = ethers.parseEther(price);
       const balance = await sgtWithSigner.balanceOf(account);
@@ -219,7 +219,7 @@ export default function NFTMarketplace({ provider, account }) {
     try {
       setLoading(true);
       const signer = await provider.getSigner();
-      const marketplaceWithSigner = marketplaceContract.connect(signer);
+      const marketplaceWithSigner = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, signer);
 
       const tx = await marketplaceWithSigner.cancelListing(tokenId);
       await tx.wait();
