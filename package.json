@@ -16,7 +16,9 @@
     "deploy:phase2": "npx hardhat run scripts/deploy-phase2.cjs --network scrollSepolia",
     "verify": "npx hardhat run scripts/verify.js --network scrollSepolia",
     "interact": "npx hardhat run scripts/interactions.js --network scrollSepolia",
-    "interact:phase2": "npx hardhat run scripts/interact-phase2.cjs --network scrollSepolia"
+    "interact:phase2": "npx hardhat run scripts/interact-phase2.cjs --network scrollSepolia",
+    "deploy:phase3": "npx hardhat run scripts/deploy-phase3.cjs --network scrollSepolia",
+    "interact:phase3": "npx hardhat run scripts/interact-phase3.cjs --network scrollSepolia"
   },
   "keywords": [
     "scroll",
