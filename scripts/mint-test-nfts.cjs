@@ -1,5 +1,13 @@
 const { ethers } = require("hardhat");
-require("dotenv").config();
+const path = require("path");
+const fs = require("fs");
+
+// Load .env file explicitly
+const dotenv = require("dotenv");
+const envPath = path.resolve(__dirname, "../.env");
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
 
 async function main() {
   console.log("🎨 Minting Test Genesis Badges for Marketplace Demo...\n");
@@ -14,9 +22,21 @@ async function main() {
     staking: process.env.VITE_NFT_STAKING_ADDRESS,
   };
 
+  console.log("📍 Loading Contract Addresses:");
+  console.log("=".repeat(60));
+  console.log("SGT Token:      ", addresses.sgtToken || "❌ NOT FOUND");
+  console.log("Genesis Badge:  ", addresses.genesisBadge || "❌ NOT FOUND");
+  console.log("NFT Staking:    ", addresses.staking || "❌ NOT FOUND");
+  console.log("");
+
   for (const [name, address] of Object.entries(addresses)) {
     if (!address) {
-      console.error(`❌ ${name} address not set in .env`);
+      console.error(`❌ ${name} address not set in .env file`);
+      console.error("\nPlease ensure your .env file contains:");
+      console.error("  VITE_CONTRACT_ADDRESS=<Your SGT Token Address>");
+      console.error("  VITE_GENESIS_BADGE_ADDRESS=<Your Genesis Badge Address>");
+      console.error("  VITE_NFT_STAKING_ADDRESS=<Your Staking Contract Address>");
+      console.error("\nRun 'npm run interact:phase2' to see your deployed addresses.\n");
       process.exit(1);
     }
   }

@@ -1,98 +1,76 @@
 # NFT Marketplace - Quick Start Guide
 
-## Populate Your Marketplace in 3 Steps
+## ✅ SUCCESS! You Now Have 5 Genesis Badges
 
-### Step 1: Mint SGT Tokens (1 minute)
+Your badges have been minted:
+- 🟤 **Token #0:** Bronze Badge
+- ⚪ **Token #1:** Silver Badge
+- 🟡 **Token #2:** Gold Badge
+- ⚫ **Token #3:** Platinum Badge
+- 💎 **Token #4:** Diamond Badge
+
+---
+
+## Next: List Them on Your Marketplace (2 minutes)
+
+### Step 1: Start the Application
 ```bash
 npm run dev
 ```
-- Connect wallet
-- Go to "Token" tab
-- Mint 20,000 SGT tokens
 
-### Step 2: Mint Genesis Badge NFTs (2 minutes)
-```bash
-npm run mint:nfts
-```
-This automatically mints 5 badges (Bronze, Silver, Gold, Platinum, Diamond)
+### Step 2: Connect & Navigate
+1. Connect your wallet (if not already)
+2. Click **"Marketplace"** tab in navigation
+3. Click **"My NFTs"** sub-tab
 
-### Step 3: List NFTs for Sale (2 minutes)
-```bash
-npm run dev
-```
-- Go to "Marketplace" tab
-- Click "My NFTs"
-- List badges with prices:
-  - Bronze: 50 SGT
-  - Silver: 150 SGT
-  - Gold: 400 SGT
-  - Platinum: 1,200 SGT
-  - Diamond: 3,000 SGT
+### Step 3: List Your Badges
+List them with these suggested prices for variety:
 
-### Done! 🎉
-Your marketplace now shows live listings with instant loading!
+| Badge | Suggested Price |
+|-------|----------------|
+| Bronze | 50 SGT |
+| Silver | 200 SGT |
+| Gold | 500 SGT |
+| Platinum | 1,500 SGT |
+| Diamond | 4,000 SGT |
 
----
+**How to List:**
+1. Click "List for Sale" on a badge
+2. Enter price (e.g., `50` for Bronze)
+3. Click "Confirm"
+4. Approve NFT transfer in wallet
+5. Wait for transaction
 
-## What You'll See
-
-### Marketplace Features:
-✅ **Browse Marketplace** - See all listings (loads instantly!)
-✅ **My NFTs** - Manage your badges
-✅ **My Listings** - Track active sales
-✅ **Stats Dashboard** - Floor price, total listings, fees
-
-### Badge Tiers (Color Coded):
-- 🟤 **Bronze** - 100 SGT × 1 day stake
-- ⚪ **Silver** - 500 SGT × 7 days stake
-- 🟡 **Gold** - 1,000 SGT × 30 days stake
-- ⚫ **Platinum** - 5,000 SGT × 90 days stake
-- 💎 **Diamond** - 10,000 SGT × 180 days stake
+### Step 4: View Your Marketplace
+1. Click **"Browse Marketplace"** sub-tab
+2. See your listings load **instantly** ⚡
+3. Beautiful color-coded badge cards
+4. Floor price auto-calculated
 
 ---
 
-## Troubleshooting
+## 🎉 Your Marketplace is Live!
 
-**"Insufficient SGT"**
-→ Mint more tokens in Token tab (need 20,000 total)
+**Stats Dashboard:**
+- Total Active Listings: 5
+- Floor Price: 50 SGT
+- Marketplace Fee: 2.5%
 
-**"Transaction failed"**
-→ Get testnet ETH from https://sepolia.scroll.io/faucet
-
-**"No badges showing"**
-→ Hard refresh browser (Ctrl+Shift+R)
+**Performance: Up to 2,000x faster!** ⚡
 
 ---
 
-## Performance
-
-**Before optimization:** 3-5 second load time
-**After optimization:** <1 second ⚡ (up to 2,000x faster!)
-
----
-
-## Full Documentation
-
-See `/docs/marketplace-showcase-guide.md` for complete details
-
----
-
-## Commands Reference
+## Commands
 
 ```bash
-# Mint test NFTs
-npm run mint:nfts
-
-# Check contract status
-npm run interact:phase2
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
+npm run mint:nfts      # Mint more badges (owner only)
+npm run dev            # Start application
+npm run build          # Build for production
+npm run interact:phase2 # Check contract status
 ```
 
 ---
 
-**Ready to showcase your lightning-fast NFT marketplace!** 🚀
+## 🚀 Your Lightning-Fast Marketplace is Ready!
+
+List your badges and watch them appear instantly! ⚡

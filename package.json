@@ -19,7 +19,8 @@
     "interact:phase2": "npx hardhat run scripts/interact-phase2.cjs --network scrollSepolia",
     "deploy:phase3": "npx hardhat run scripts/deploy-phase3.cjs --network scrollSepolia",
     "interact:phase3": "npx hardhat run scripts/interact-phase3.cjs --network scrollSepolia",
-    "mint:nfts": "npx hardhat run scripts/mint-test-nfts.cjs --network scrollSepolia"
+    "mint:nfts": "npx hardhat run scripts/direct-mint-badges.cjs --network scrollSepolia",
+    "mint:bronze": "npx hardhat run scripts/quick-mint-bronze.cjs --network scrollSepolia"
   },
   "keywords": [
     "scroll",
