@@ -1308,6 +1308,173 @@
       "artifacts": [
         "LendingProtocol"
       ]
+    },
+    "/tmp/cc-agent/59221769/project/contracts/advanced/ScrollGenLRT.sol": {
+      "lastModificationDate": 1761631561634,
+      "contentHash": "09883d3fb64012e970f3237105b540b1",
+      "sourceName": "contracts/advanced/ScrollGenLRT.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ScrollGenLRT"
+      ]
+    },
+    "/tmp/cc-agent/59221769/project/contracts/advanced/ScrollGenDEXAggregator.sol": {
+      "lastModificationDate": 1761631627965,
+      "contentHash": "5be588773e0865349b9e0c86b43ff83a",
+      "sourceName": "contracts/advanced/ScrollGenDEXAggregator.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ScrollGenDEXAggregator"
+      ]
+    },
+    "/tmp/cc-agent/59221769/project/contracts/advanced/ScrollGenBridge.sol": {
+      "lastModificationDate": 1761631487893,
+      "contentHash": "f5baf31940e9981cd313cca1d3dbbee0",
+      "sourceName": "contracts/advanced/ScrollGenBridge.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ScrollGenBridge"
+      ]
+    },
+    "/tmp/cc-agent/59221769/project/contracts/advanced/APIGateway.sol": {
+      "lastModificationDate": 1761631598803,
+      "contentHash": "2dee42165ea17266d250f3028d24961f",
+      "sourceName": "contracts/advanced/APIGateway.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "APIGateway",
+        "IBridgeConnector",
+        "IERC20",
+        "ILRT",
+        "ILendingProtocol",
+        "IStakingRewards"
+      ]
     }
   }
 }
