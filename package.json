@@ -1,7 +1,7 @@
 {
   "name": "scrollgen",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "ScrollGen - Modular zkEVM protocol on Scroll network",
   "type": "module",
   "scripts": {
@@ -21,6 +21,10 @@
     "interact:phase3": "npx hardhat run scripts/interact-phase3.cjs --network scrollSepolia",
     "deploy:phase5": "npx hardhat run scripts/deploy-phase5.cjs --network scrollSepolia",
     "interact:phase5": "npx hardhat run scripts/interact-phase5.cjs --network scrollSepolia",
+    "deploy:phase6": "npx hardhat run scripts/deploy-phase6.cjs --network scrollMainnet",
+    "bootstrap:liquidity": "npx hardhat run scripts/liquidity-bootstrap.cjs --network scrollMainnet",
+    "postlaunch": "npx hardhat run scripts/postlaunch.cjs --network scrollMainnet",
+    "build:docs": "cd docs-site && npm run build",
     "mint:nfts": "npx hardhat run scripts/direct-mint-badges.cjs --network scrollSepolia",
     "mint:bronze": "npx hardhat run scripts/quick-mint-bronze.cjs --network scrollSepolia"
   },
