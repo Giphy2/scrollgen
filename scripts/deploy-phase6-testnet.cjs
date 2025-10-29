@@ -52,7 +52,7 @@ async function main() {
 
   console.log("2. Deploying DEX Aggregator...");
   const DEXAggregator = await hre.ethers.getContractFactory("ScrollGenDEXAggregator");
-  const dexAgg = await DEXAggregator.deploy();
+  const dexAgg = await DEXAggregator.deploy(deployer.address); // Fee collector = deployer
   await dexAgg.waitForDeployment();
   deployments.dexAggregator = await dexAgg.getAddress();
   console.log("   ✅ DEX Aggregator:", deployments.dexAggregator);
@@ -66,16 +66,21 @@ async function main() {
 
   console.log("4. Deploying API Gateway...");
   const APIGateway = await hre.ethers.getContractFactory("APIGateway");
-  const apiGateway = await APIGateway.deploy(
+  const apiGateway = await APIGateway.deploy(); // No constructor params
+  await apiGateway.waitForDeployment();
+  deployments.apiGateway = await apiGateway.getAddress();
+  console.log("   ✅ API Gateway:", deployments.apiGateway);
+
+  console.log("5. Registering contracts in API Gateway...");
+  let txReg = await apiGateway.registerContracts(
     deployments.sgtToken,
     deployments.stakingRewards,
     deployments.lending,
     deployments.bridge,
     deployments.lrt
   );
-  await apiGateway.waitForDeployment();
-  deployments.apiGateway = await apiGateway.getAddress();
-  console.log("   ✅ API Gateway:", deployments.apiGateway);
+  await txReg.wait();
+  console.log("   ✅ Contracts registered");
 
   // ========================================
   // PHASE 5: AI & Gamification
