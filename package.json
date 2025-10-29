@@ -21,6 +21,7 @@
     "interact:phase3": "npx hardhat run scripts/interact-phase3.cjs --network scrollSepolia",
     "deploy:phase5": "npx hardhat run scripts/deploy-phase5.cjs --network scrollSepolia",
     "interact:phase5": "npx hardhat run scripts/interact-phase5.cjs --network scrollSepolia",
+    "deploy:phase6:testnet": "npx hardhat run scripts/deploy-phase6-testnet.cjs --network scrollSepolia",
     "deploy:phase6": "npx hardhat run scripts/deploy-phase6.cjs --network scrollMainnet",
     "bootstrap:liquidity": "npx hardhat run scripts/liquidity-bootstrap.cjs --network scrollMainnet",
     "postlaunch": "npx hardhat run scripts/postlaunch.cjs --network scrollMainnet",
